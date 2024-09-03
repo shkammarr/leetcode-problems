@@ -13,6 +13,7 @@ class Solution {
                 posIndx+=2;
             }
         }
+        System.gc();
         return ans;
     }
 }
