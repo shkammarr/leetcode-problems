@@ -7,6 +7,7 @@ class Solution {
             cs = Math.max(cs + nums[i], nums[i]);
             maxSum = Math.max(maxSum, cs);
         }
+        System.gc();
         return maxSum;
     }
 }
