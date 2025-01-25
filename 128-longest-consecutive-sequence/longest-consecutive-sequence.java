@@ -19,6 +19,7 @@ class Solution {
         }
         max = Math.max(max, cnt);
       }
+    System.gc();
     return max;
     }
 }
