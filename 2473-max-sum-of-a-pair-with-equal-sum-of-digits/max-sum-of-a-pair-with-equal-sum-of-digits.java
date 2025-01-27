@@ -16,6 +16,7 @@ class Solution {
                 map.put(digValue, nums[i]);
             }
         }
+        System.gc();
         return max;
     }
 
