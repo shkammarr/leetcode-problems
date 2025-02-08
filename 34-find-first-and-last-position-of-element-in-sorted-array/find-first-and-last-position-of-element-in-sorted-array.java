@@ -1,48 +1,50 @@
 class Solution {
     public int[] searchRange(int[] nums, int target) {
-        int leftMost = leftPosition(nums, target);
-        int rightMost = rightPosition(nums, target);
+        int left = leftSearch(nums, target);
+        int right = rightSearch(nums, target);
 
-        return new int[] {leftMost, rightMost};
+        System.gc();
+        return new int[]{left, right};
     }
 
-     public int leftPosition(int nums[], int tar) {
-        int st = 0, end = nums.length-1;
-        int left = -1;
+    public int leftSearch(int nums[], int target) {
+        int leftAns = -1;
+        int st= 0; int end = nums.length-1; 
         while(st <= end) {
-            int mid = st + (end - st)/2;
+            int mid = (st + end)/2;
 
-            if(nums[mid] == tar) {
-                left = mid;
-                end = mid -1;
-            }
-            else if(nums[mid] < tar) {
-                st = mid + 1;
-            }
-            else {
+            if(nums[mid] == target) {
+                leftAns = mid;
                 end = mid - 1;
             }
-        }
-        return left;
-      }
 
-      public int rightPosition(int nums[], int tar) {
-        int st = 0, end = nums.length-1;
-        int right = -1;
+            else if(nums[mid] < target) {
+                st = mid + 1;
+            }
+            
+            else end = mid - 1;
+        }
+        return leftAns;
+    }
+
+    public int rightSearch(int nums[],int target) {
+        int rightAns = -1;
+        int st= 0; int end = nums.length-1; 
         while(st <= end) {
-            int mid = st + (end - st)/2;
+            int mid = (st + end)/2;
 
-            if(nums[mid] == tar) {
-                right = mid;
+            if(nums[mid] == target) {
+                rightAns = mid;
                 st = mid + 1;
             }
-            else if(nums[mid] < tar) {
+
+            else if(nums[mid] < target) {
                 st = mid + 1;
             }
-            else {
-                end = mid - 1;
-            }
+            
+            else end = mid - 1;
         }
-        return right;
-      }
+        return rightAns;
+    }
+
 }
